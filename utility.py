@@ -102,10 +102,10 @@ def get_cache_rs(fieldname, start_time, end_time, device_ids=None):
     filename = get_cache_filename(fieldname, start_time, end_time, device_ids)
 
     if os.path.isfile(filename):
-        print('File loaded: %s ' % filename)
+        # print('File loaded: %s ' % filename)
         return load_pickle(filename)
     else:
-        print('File not found at : %s' % filename)
+        # print('File not found at : %s' % filename)
         rs = get_rs_from_influx(fieldname, start_time, end_time, device_ids)
         save_pickle(rs, filename)
         return rs
@@ -135,7 +135,7 @@ def get_cache_lfdf(fieldname, start_time, end_time, device_ids=None):
         fieldname, start_time, end_time, device_ids=device_ids)
 
     if os.path.isfile(filename):
-        print('File loaded: %s ' % filename)
+        # print('File loaded: %s ' % filename)
         return load_pickle(filename)
     else:
         df = get_lfdf(fieldname, start_time, end_time, device_ids)
@@ -149,7 +149,7 @@ def get_cache_health_score(pdf, s, e, freq_str, fieldname):
         fieldname, s, e, list(pdf['device_id']), freq_str)
 
     if os.path.isfile(filename):
-        print('File loaded: %s ' % filename)
+        # print('File loaded: %s ' % filename)
         return load_pickle(filename)
     else:
         score = get_health_score(pdf, s, e, freq_str)
